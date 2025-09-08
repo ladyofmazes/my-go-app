@@ -87,14 +87,14 @@ func (state *gameState) onCanvasClicked(x, y int) {
 
 func (state *gameState) onTopClicked() {
 	defer state.draw()
-	curUpRow = 1
+	curUpRow = -1
 	curUpCol = 0
 	state.advance(curUpRow, curUpCol)
 }
 
 func (state *gameState) onBottomClicked() {
 	defer state.draw()
-	curUpRow = -1
+	curUpRow = 1
 	curUpCol = 0
 	state.advance(curUpRow, curUpCol)
 }
