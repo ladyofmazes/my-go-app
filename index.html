@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
+<script src="wasm_exec.js"></script>
 
 <head>
-    <link rel="icon" href="data:," />
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Words</title>
@@ -18,23 +16,19 @@
             font-family: Verdana, sans-serif;
             background-color: #f4f4f4;
         }
-    
         #gridContainer {
             display: grid;
             grid-template-rows: 500px auto;
             gap: 20px;
             text-align: center;
         }
-    
         canvas {
             border: 1px solid #ccc;
         }
-    
         #buttonRow {
             display: flex;
             justify-content: space-around;
         }
-    
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -45,12 +39,10 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-    
         button:hover {
             background-color: #2980b9;
         }
     </style>
-    <script src="wasm_exec.js"></script>
 </head>
 
 <body>
@@ -68,8 +60,7 @@
         </div>
     </div>
     <script>
-        const go = new window.Go();
-
+        const go = new Go();
         WebAssembly.instantiateStreaming(fetch("my-go-app.wasm"), go.importObject).then(
             (obj) => {
                 go.run(obj.instance);

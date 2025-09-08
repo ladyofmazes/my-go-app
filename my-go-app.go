@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"syscall/js"
 )
@@ -27,6 +28,7 @@ type gameState struct {
 }
 
 func main() {
+	fmt.Println("Go Web Assembly")
 	doc := js.Global().Get("document")
 
 	state := gameState{
