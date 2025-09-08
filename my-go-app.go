@@ -67,9 +67,8 @@ func main() {
 			state.onRightClicked()
 			return nil
 		}))
-
-	state.draw()
 	state.start()
+	state.draw()
 	select {}
 }
 
@@ -175,10 +174,15 @@ func (state *gameState) advance(upRow int, upCol int) {
 	newGrid := [numRows][numCols]bool{}
 	for r := range numRows {
 		for c := range numCols {
-			if state.grid[r][c] {
+			if (r-upRow) > 0 && (r-upRow < numRows) && (c-upCol) > 0 && (c-upCol < numCols) {
+				fmt.Println("Advancing")
+				fmt.Println(fmt.Sprintf("Cur row: %d cur col: %d %d %d", r, c, upRow, upCol))
 				newGrid[r][c] = state.grid[r-upRow][c-upCol]
 			} else {
-				newGrid[r][c] = state.grid[r-upRow][c-upCol]
+				//grid := [numRows][numCols]bool{}
+				//state.grid = grid
+				//return
+				continue
 			}
 		}
 	}
