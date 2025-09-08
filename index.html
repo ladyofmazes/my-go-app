@@ -5,41 +5,68 @@
     <link rel="icon" href="data:," />
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words</title>
     <style>
-        .content {
-            height: 100%;
-            width: 100%;
-        }
-
-        input {
-            font-family: inherit;
-            font-size: 100%;
-        }
-
-        .content {
+        body {
             display: flex;
-            flex-flow: column nowrap;
-            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Verdana, sans-serif;
+            background-color: #f4f4f4;
         }
-
-        .buttons {
+    
+        #gridContainer {
+            display: grid;
+            grid-template-rows: 500px auto;
+            gap: 20px;
+            text-align: center;
+        }
+    
+        canvas {
+            border: 1px solid #ccc;
+        }
+    
+        #buttonRow {
             display: flex;
-            flex-flow: row wrap;
-            gap: 10px;
+            justify-content: space-around;
         }
-
-        .output {
-            display: flex;
-            flex-flow: row wrap;
-            gap: 10px;
+    
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-
+    
+        button:hover {
+            background-color: #2980b9;
+        }
     </style>
     <script src="wasm_exec.js"></script>
 </head>
 
 <body>
-
+    <div id="gridContainer">
+        <canvas id="gameCanvas" width="500" height="500"></canvas>
+        <div id="buttonRow">
+            <button id="topButton">Up</button>
+        </div>
+        <div id="buttonRow">
+            <button id="leftButton">Left</button>
+            <button id="rightButton">Right</button>
+        </div>
+        <div id="buttonRow">
+            <button id="bottomButton">Down</button>
+        </div>
+    </div>
     <script>
         const go = new window.Go();
 
